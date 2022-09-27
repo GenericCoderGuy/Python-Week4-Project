@@ -8,11 +8,11 @@ def clear():
         _ = system('clear')
 
 class Data:
-    def __init__(self):
-        self.name = []
-        self.property = []
-        self.income = 0
-        self.investment = 0
+    def __init__(self, name, property, income, investment):
+        self.name = name
+        self.property = property
+        self.income = income
+        self.investment = investment
 
     def userName(self):
         self.name = input('Please enter your name: ')
@@ -37,13 +37,16 @@ class Data:
                 print("Please enter a valid number.")
 
     def calculateRoi(self):
-        clear()
         roi = (self.income / self.investment) * 100
         print(f'The property "{self.property.title()}" has a Roi of: %{roi}')
+        return roi
 
 class User(Data):
     def __init__(self):
-        super().__init__()
+        self.name = 'None'
+        self.property = 'None'
+        self.income = 0
+        self.investment = 0
         # Orginialy intended to have multiple users.
 
 class Roi(Data):
@@ -79,3 +82,12 @@ class Roi(Data):
 
 roi = Roi()
 roi.begin()
+
+# data = Data('Test1', 'Test1', 100, 100)
+# data.calculateRoi()
+
+# data = Data('Test2', 'Test2', 45, 80)
+# data.calculateRoi()
+
+# data = Data('Test3', 'Test3', 90, 25)
+# data.calculateRoi()
